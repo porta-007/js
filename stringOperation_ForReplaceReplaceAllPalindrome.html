@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title> Experiment No 3</title>
+
+</head>
+
+<body>
+
+    <h1> String Operations</h1>
+
+    <br>
+
+    <label> Enter the String</label>
+
+    <input id="base">
+
+    <br>
+
+    <br>
+
+    <h2> Using for Loop</h2>
+
+    <button type="submit" onclick="reverse()">Reverse</button>
+
+    <h3 id="try"></h3>
+
+    <br>
+
+    <h2> Using Built-in function</h2>
+
+    <button type="submit" onclick="builtin()">Reverse</button>
+
+    <h3 id="me"></h3>
+
+    <br>
+
+    <h2> Using Replace function</h2>
+
+    <br>
+
+    <label> Enter the Character to be Removed</label>
+
+    <input id="remove">
+
+    <br>
+
+    <br>
+
+    <label>Enter the Character to be Added</label>
+
+    <input id="add">
+
+    <br>
+
+    <br>
+
+    <button type="submit" onclick="rep()">Replace & add</button>
+
+    <h3 id="result1"></h3>
+
+    <h2> Using ReplaceAll function</h2>
+
+    <br>
+
+    <br>
+
+    <label> Enter the Character to be Removed</label>
+
+    <input id="remov">
+
+    <br>
+
+    <br>
+
+    <label>Enter the Character to be Added</label>
+
+    <input id="ad">
+
+    <br>
+
+    <br>
+
+    <button type="submit" onclick="repall()">Replace & add</button>
+
+    <h3 id="result2"></h3>
+
+    <br>
+
+    <h2> Check String is Palindrome or Not </h2>
+
+    <button type="submit" onclick="check()">Check</button>
+
+    <h3 id="result3"></h3>
+
+    <script>
+
+        function reverse() {
+
+            var str = document.getElementById("base").value;
+
+            let reversedStr = "";
+
+            for (let i = str.length - 1; i >= 0; i--) {
+
+                reversedStr += str[i];
+
+            }
+
+            document.getElementById("try").innerHTML = "Reverse String is : " + reversedStr;
+
+        }
+
+        function builtin() {
+
+            var str = document.getElementById("base").value;
+
+            const arr = str.split("");
+
+            const arr1 = arr.reverse();
+
+            const join = arr1.join("");
+
+            document.getElementById("me").innerHTML = "Reverse String is : " + join;
+
+        }
+
+        function rep() {
+
+            var str = document.getElementById("base").value;
+
+            var str1 = document.getElementById("remove").value;
+
+            var str2 = document.getElementById("add").value;
+
+            var newstr = str.replace(str1, str2);
+
+            document.getElementById("result1").innerHTML = "New String is :" + newstr;
+
+        }
+
+        function repall() {
+
+            var str = document.getElementById("base").value;
+
+            var str1 = document.getElementById("remov").value;
+
+            var str2 = document.getElementById("ad").value;
+
+            var newstr1 = str.replaceAll(str1, str2);
+
+            document.getElementById("result2").innerHTML = "New String is :" + newstr1;
+
+        }
+
+        function check() {
+
+            var str = document.getElementById("base").value;
+
+            var str1 = reverse();
+
+            document.getElementById("result3").innerHTML = "String is Palindrome";
+
+            if (str != str1) {
+
+                document.getElementById("result3").innerHTML = "String is not Palindrome";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

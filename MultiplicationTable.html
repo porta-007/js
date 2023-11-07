@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiplication Table Generator</title>
+    <script>
+        function generateTable() {
+            var number = parseInt(document.getElementById("number").value);
+            var output = document.getElementById("output");
+            output.innerHTML = ""; // Clear any previous content
+
+            for (var i = 1; i <= 10; i++) {
+                var result = number * i;
+                output.innerHTML = output.innerHTML + (number + " x " + i + " = " + result + "<br>");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Multiplication Table Generator</h1>
+    <label>Enter a number:</label>
+    <input id="number">
+    <button type = "button" onclick="generateTable()">Generate Table</button>
+    <br><br>
+    <div id="output"></div>
+</body>
+</html>

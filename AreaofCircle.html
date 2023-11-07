@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Area</title>
+    <script>
+       function triangle(){
+    var b = parseFloat(document.getElementById("Base").value);
+    var h = parseFloat(document.getElementById("Height").value);
+    var area = 0.5 * b * h;
+    document.getElementById("trianglearea").innerHTML = "Area of Triangle: " + area;
+}
+
+function circle(){
+    var r = parseFloat(document.getElementById("Radius").value);
+    var area = (22/7) * r * r; // Assuming PI as 22/7
+    document.getElementById("circlearea").innerHTML = "Area of Circle: " + area;
+}
+
+function rectangle(){
+    var l = parseFloat(document.getElementById("Length").value);
+    var b = parseFloat(document.getElementById("Breadth").value);
+    var area = l * b;
+    document.getElementById("rectanglearea").innerHTML = "Area of Rectangle: " + area;
+}
+
+        
+
+
+    </script>
+</head>
+<body>
+    <h1>Experiment No.1</h1>
+
+    <h2>Triangle</h2>
+    <label>Enter Base</label>
+    <input id="Base"><br><br>
+
+    <label>Enter Height</label>
+    <input id="Height"><br><br>
+
+    <button type="submit" onclick="triangle()">Submit</button><br>
+
+    <h4 id="trianglearea">Output ?</h4><br><br>
+
+    <h2>Circle</h2>
+    <label>Enter Radius</label><br>
+    <input id="Radius"><br>
+
+    <button type="submit" onclick="circle()">Submit</button><br>
+
+    <h4 id="circlearea">Output ?</h4><br><br>
+
+    <h2>Rectangle</h2>
+    <label>Enter Length</label>
+    <input id="Length"><br><br>
+
+    <label>Enter Breadth</label>
+    <input id="Breadth"><br><br>
+
+    <button type="submit" onclick="rectangle()">Submit</button><br>
+
+    <h4 id="rectanglearea">Output ?</h4>
+</body>
+</html>

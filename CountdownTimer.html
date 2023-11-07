@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Countdown Timer</title>
+    <style>
+        .timer-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="timer-container">
+
+        <h1>Countdown Timer</h1>
+
+        <h2><label for="expiry-input">Enter Timer Expiry Date and Time (YYYY-MM-DD HH:MM:SS):</label></h2>
+
+        <input type="text" id="expiry-input" placeholder="YYYY-MM-DD HH:MM:SS">
+
+        <button id="start-button">Start Countdown</button>
+
+        <div class="timer">
+            <br>
+            <br>
+            <h1 id="days">00:00:00:00</h1>
+            <h1 id="message">Hurry up !!</h1>
+        </div>
+
+    </div>
+
+    <script>
+        let expiryDate = 0;
+        let timerInterval;
+
+        document.getElementById("start-button").addEventListener("click", function () {
+
+            const inputDate = document.getElementById("expiry-input").value;
+            const parsedDate = new Date(inputDate).getTime();
+
+            if (!isNaN(parsedDate) && parsedDate > new Date().getTime()) {
+                expiryDate = parsedDate;
+                clearInterval(timerInterval);
+                timerInterval = setInterval(updateTimer, 1000);
+            } else {
+                document.getElementById("message").textContent = "Please enter a valid future date and time.";
+            }
+        });
+
+        function updateTimer() {
+            const currentDate = new Date().getTime();
+            const difference = expiryDate - currentDate;
+
+            if (difference <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById("message").textContent = "Timer expired !!";
+            } else {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById("days").textContent = days + ":" + hours + ":" + minutes + ":" + seconds;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

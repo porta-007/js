@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Comparison</title>
+    <script>
+
+        function compareUsingMath() {
+            var string1 = document.getElementById('string1').value;
+            var string2 = document.getElementById('string2').value;
+            document.getElementById('method1').textContent = string1 == string2;
+        }
+        
+        function compareUsingStrict() {
+            var string1 = document.getElementById('string1').value;
+            var string2 = document.getElementById('string2').value;
+            document.getElementById('method2').textContent = string1 === string2;
+        }
+        
+        function compareUsingMatch() {
+            var string1 = document.getElementById('string1').value;
+            var string2 = document.getElementById('string2').value;
+            var result = string1.match(string2);
+            var cmp;
+        
+            if (result !== null) {
+                cmp = "String 1 is matching with string 2<br>Index: " + result.index + "<br>Element: " + result[0];
+            } else {
+                cmp = "String 1 is not matching with string 2";
+            }
+        
+            document.getElementById('method3').innerHTML = cmp;
+        }
+        
+        function compareUsingMatchAll() {
+            var string1 = document.getElementById('string1').value;
+            var string2 = document.getElementById('string2').value;
+            var regex = new RegExp(string2, 'g');
+            var result = [...string1.matchAll(regex)];
+            var cmp = "";
+        
+            if (result.length > 0) {
+                var indices = result.map(match => match.index).join(' ');
+                cmp = "String 1 is matching with string 2<br>Index: " + indices + "<br>Element: " + result.map(match => match[0]).join(' ');
+            } else {
+                cmp = "String 1 is not matching with string 2";
+            }
+        
+            document.getElementById('method4').innerHTML = cmp;
+        }
+        
+        
+        function compareUsingLocale() {
+            var str1 = document.getElementById('string1').value;
+            var str2 = document.getElementById('string2').value;
+            var str3 = str1.localeCompare(str2);
+            var cmp;
+        
+            if (str3 == 0) {
+                cmp = str3 + ", Means string 1 is equal to string 2";
+            } else if (str3 == -1) {
+                cmp = str3 + ", Means string 2 is greater than string 1";
+            } else {
+                cmp = str3 + ", Means String 1 is greater than string 2";
+            }
+        
+            document.getElementById("method5").innerHTML = cmp;
+        }
+        
+        
+        
+
+
+
+
+    </script>
+</head>
+<body>
+    <h1>String Comparison</h1>
+
+    <label>Enter first string:</label>
+    <input type="text" id="string1"><br>
+
+    <label>Enter second string:</label>
+    <input type="text" id="string2"><br>
+
+    <h2>Using Mathematical Operator</h2>
+    <button onclick="compareUsingMath()">Compare</button>
+    <p id="method1"></p>
+
+    <h2>Using Strictly Operators</h2>
+    <button onclick="compareUsingStrict()">Compare</button>
+    <p id="method2"></p>
+
+    <h2>Using match method</h2>
+    <button onclick="compareUsingMatch()">Compare</button>
+    <p id="method3"></p>
+
+    <h2>Using matchAll method</h2>
+    <button onclick="compareUsingMatchAll()">Compare</button>
+    <p id="method4"></p>
+
+    <h2>Using localeCompare method</h2>
+    <button onclick="compareUsingLocale()">Compare</button>
+    <p id="method5"></p>
+
+    
+</body>
+</html>

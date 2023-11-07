@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Object Array Demo</title>
+    <script>
+        var objectArray = [];
+
+        function addToArray() {
+            var field = document.getElementById("fieldInput").value;
+            var value = document.getElementById("valueInput").value;
+
+            var obj = {
+                field: field,
+                value: value
+            };
+
+            objectArray.push(obj);
+            displayArray();
+        }
+
+        function displayArray() {
+            var output = document.getElementById("output");
+            output.innerHTML = "";
+
+            for (var i = 0; i < objectArray.length; i++) {
+                var obj = objectArray[i];
+                var fieldArray = obj.field.split(",");
+                var valueArray = obj.value.split(",");
+
+                var content = "{";
+                for (var j = 0; j < fieldArray.length; j++) {
+                    content += '"' + fieldArray[j] + '":"' + valueArray[j] + '"';
+                    if (j < fieldArray.length - 1) {
+                        content += ",";
+                    }
+                }
+                content += "}";
+
+                var listItem = document.createElement("li");
+                listItem.textContent = content;
+                output.appendChild(listItem);
+            }
+        }
+
+        function checkField() {
+            var checkField = document.getElementById("checkField").value;
+            var found = false;
+
+            for (var i = 0; i < objectArray.length; i++) {
+                var obj = objectArray[i];
+                var fieldArray = obj.field.split(",");
+                if (fieldArray.includes(checkField)) {
+                    found = true;
+                    break;
+                }
+            }
+
+            var result = document.getElementById("checkResult");
+            result.textContent = found ? "Field is in the array." : "Field is not in the array.";
+        }
+
+        // Added function for checking variable
+        function checkVariable() {
+            var checkVariable = document.getElementById("checkVariable").value;
+            var found = false;
+
+            for (var i = 0; i < objectArray.length; i++) {
+                var obj = objectArray[i];
+                var valueArray = obj.value.split(",");
+                if (valueArray.includes(checkVariable)) {
+                    found = true;
+                    break;
+                }
+            }
+
+            var result = document.getElementById("checkResultVariable");
+            result.textContent = found ? "Variable is in the array." : "Variable is not in the array.";
+        }
+    </script>
+</head>
+<body>
+    <h1>Object Array Demo</h1>
+
+    <h2>Add to Array</h2>
+    <label for="fieldInput">Field:</label>
+    <input type="text" id="fieldInput"><br>
+
+    <label for="valueInput">Value:</label>
+    <input type="text" id="valueInput"><br>
+
+    <button onclick="addToArray()">Add to Array</button>
+
+    <h2>Array Contents</h2>
+    <ul id="output"></ul>
+
+    <h2>Check Field</h2>
+    <label for="checkField">Check Field:</label>
+    <input type="text" id="checkField"><br>
+
+    <button onclick="checkField()">Check Field in Array</button>
+    <p id="checkResult"></p>
+
+    <h2>Check Variable</h2> <!-- Added heading for new functionality -->
+    <label for="checkVariable">Check Variable:</label>
+    <input type="text" id="checkVariable"><br>
+
+    <button onclick="checkVariable()">Check Variable in Array</button> <!-- Added button for new functionality -->
+    <p id="checkResultVariable"></p>
+</body>
+</html>

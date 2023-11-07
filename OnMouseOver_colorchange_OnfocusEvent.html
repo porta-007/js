@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exp8</title>
+</head>
+<body>
+    <h1>Sinhgad College of Engineering</h1>
+    <br>
+    <div id="onmouseover1" onmouseover="changeColor('onmouseover1', 'orange')" onmouseout="changeColor('onmouseover1', 'red')" onfocus="changeFocus('onmouseover1')" tabindex="0" style="height: 190px; width: 150px;">
+        <h3>Hover over me to change the color using on mouse over event </h3>
+    </div>
+    <br>
+    <div id="onmouseover2" onfocus="changeFocus('onmouseover2')" onblur="changeBlur('onmouseover2')" tabindex="0" style="height: 190px; width: 150px;">
+        <h3>Hover over me to change the color using on focus event</h3>
+    </div>
+
+    <script>
+        function changeColor(elementId, color) {
+            document.getElementById(elementId).style.backgroundColor = color;
+        }
+
+        function changeFocus(elementId) {
+            document.getElementById(elementId).style.backgroundColor = 'lightgreen';
+        }
+
+        function changeBlur(elementId) {
+            document.getElementById(elementId).style.backgroundColor = '';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Operations</title>
+    <script>
+        var myArray = [];
+
+        function takeInput() {
+            var input = document.getElementById("arrayInput").value;
+            myArray = input.split(",").map(function(item) {
+                return parseInt(item.trim(), 10);
+            });
+            displayResult();
+        }
+
+        function removeElement() {
+            var element = parseInt(document.getElementById("removeElement").value, 10);
+            var index = myArray.indexOf(element);
+            if (index !== -1) {
+                myArray.splice(index, 1);
+            }else{
+                alert("not in array");
+            }
+            displayResult();
+        }
+
+        function containsValue() {
+            var value = parseInt(document.getElementById("containsValue").value, 10);
+            var contains = myArray.includes(value);
+            if(contains==true){
+                var cont = "yes";
+            }else{
+                cont = 'No';
+            }
+            alert("Array contains value: " + cont);
+        }
+
+        function emptyArray() {
+            myArray = [];
+            displayResult();
+        }
+
+        function displayResult() {
+            document.getElementById("result").innerHTML = "Current Array: " + JSON.stringify(myArray);
+        }
+    </script>
+</head>
+<body>
+    <h1>Array Operations</h1>
+
+    <label for="arrayInput">Enter elements for the array (comma-separated):</label>
+    <input type="text" id="arrayInput"><br>
+    <button onclick="takeInput()">Take Array Input</button><br>
+
+    <label for="removeElement">Enter element to remove:</label>
+    <input type="number" id="removeElement">
+    <button onclick="removeElement()">Remove Element</button><br>
+
+    <label for="containsValue">Enter value to check:</label>
+    <input type="number" id="containsValue">
+    <button onclick="containsValue()">Check Value</button><br>
+
+    <button onclick="emptyArray()">Empty Array</button><br>
+
+    <p id="result"></p>
+</body>
+</html>
